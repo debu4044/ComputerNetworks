@@ -1,0 +1,35 @@
+clc;
+disp('IP Address Classification Program');
+
+valid = true;
+
+% Input 4 octets
+for i = 1:4
+    octet(i) = input(['Enter octet ', num2str(i), ': ']);
+
+    % Check validity (0–255)
+    if octet(i) < 0 || octet(i) > 255
+        valid = false;
+    end
+end
+
+% If all octets are valid
+if valid
+    first_octet = octet(1);   % First octet decides class
+
+    if first_octet >= 1 && first_octet <= 127
+        disp('The IP address is Class A');
+    elseif first_octet >= 128 && first_octet <= 191
+        disp('The IP address is Class B');
+    elseif first_octet >= 192 && first_octet <= 223
+        disp('The IP address is Class C');
+    elseif first_octet >= 224 && first_octet <= 239
+        disp('The IP address is Class D');
+    elseif first_octet >= 240 && first_octet <= 255
+        disp('The IP address is Class E');
+    else
+        disp('The given IP address is invalid');
+    end
+else
+    disp('Invalid IP address (each octet must be between 0 and 255)');
+end
