@@ -1,0 +1,6 @@
+ipconfig
+ping
+tracert
+nslookup
+arp
+netstat
